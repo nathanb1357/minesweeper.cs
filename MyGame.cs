@@ -22,6 +22,7 @@ public class MyGame : Game
 
     const int BOARDSIZE = 16;
     const int CELLWIDTH = 48;
+    const int BOMBS = 40;
     Cell[,] cell = new Cell[BOARDSIZE + 2, BOARDSIZE + 2];
     Texture2D bombTexture, flagTexture, blankTexture;
     Texture2D[] numbers = new Texture2D[9];
@@ -31,6 +32,9 @@ public class MyGame : Game
     public MyGame()
     {
         graphics = new GraphicsDeviceManager(this);
+        graphics.PreferredBackBufferWidth = 768;
+        graphics.PreferredBackBufferHeight = 768;
+        graphics.ApplyChanges();
         Content.RootDirectory = "Content";
         IsMouseVisible = true;
     }
@@ -48,9 +52,9 @@ public class MyGame : Game
 
     void InitializeBoard()
     {
-        for (int row = 0; row < BOARDSIZE; row++)
+        for (int row = 0; row < BOARDSIZE + 2; row++)
         {
-            for (int column = 0; column < BOARDSIZE; column++)
+            for (int column = 0; column < BOARDSIZE + 2; column++)
             {
                 cell[row, column].hasBomb = false;
                 cell[row, column].hasFlag = false;
@@ -59,8 +63,8 @@ public class MyGame : Game
                 cell[row, column].position.Height = CELLWIDTH;
                 
                 // Board size = 500px * 500px
-                cell[row, column].position.X = column * CELLWIDTH;
-                cell[row, column].position.Y = row * CELLWIDTH;
+                cell[row, column].position.X = (column - 1) * CELLWIDTH;
+                cell[row, column].position.Y = (row - 1) * CELLWIDTH;
                 cell[row, column].neighbouringBombs = 0;
             }
         }
@@ -69,26 +73,26 @@ public class MyGame : Game
     void PlantBombs()
     {
         Random random = new Random();
-        bool[] array = new bool[256];
+        bool[] array = new bool[BOARDSIZE * BOARDSIZE];
 
-        for (int i = 0; i < 216; i++)
+        for (int i = 0; i < BOARDSIZE * BOARDSIZE; i++)
             array[i] = false;
 
-        for (int i = 216; i < 256; i++)
+        for (int i = BOARDSIZE * BOARDSIZE - BOMBS; i < BOARDSIZE * BOARDSIZE; i++)
             array[i] = true;
         
-        for (int i = 0; i < 256; i++)
+        for (int i = 0; i < BOARDSIZE * BOARDSIZE; i++)
         {
-            int pos = random.Next(256);
+            int pos = random.Next(BOARDSIZE * BOARDSIZE);
             bool save = array[i];
             array[i] = array[pos];
             array[pos] = save;
         }
 
-        for (int i = 0; i < 256; i++)
+        for (int i = 0; i < BOARDSIZE * BOARDSIZE; i++)
         {
-            int column = i % BOARDSIZE;
-            int row = i / BOARDSIZE;
+            int column = (i % BOARDSIZE) + 1;
+            int row = (i / BOARDSIZE) + 1;
             cell[row, column].hasBomb = array[i];
         }
 
@@ -107,7 +111,36 @@ public class MyGame : Game
 
     void CountNeighbours()
     {
-        
+        for (int row = 1; row <= BOARDSIZE; row++)
+            for (int column = 1; column <= BOARDSIZE; column++)
+            {
+                int count = 0;
+                if (cell[row - 1, column - 1].hasBomb)
+                    count++;
+                if (cell[row - 1, column].hasBomb)
+                    count++;
+                if (cell[row - 1, column + 1].hasBomb)
+                    count++;
+                if (cell[row, column - 1].hasBomb)
+                    count++;
+                if (cell[row, column + 1].hasBomb)
+                    count++;
+                if (cell[row + 1, column - 1].hasBomb)
+                    count++;
+                if (cell[row + 1, column].hasBomb)
+                    count++;
+                if (cell[row + 1, column + 1].hasBomb)
+                    count++;
+                cell[row, column].neighbouringBombs = count;
+            }
+        for (int row = 1; row <= BOARDSIZE; row++)
+        {
+            for (int column = 1; column <= BOARDSIZE; column++)
+            {
+                Console.Write(" {0}", cell[row, column].neighbouringBombs);
+            }
+            Console.WriteLine();
+        }
     }
 
     protected override void LoadContent()
@@ -130,7 +163,6 @@ public class MyGame : Game
         numbers[6] = Content.Load<Texture2D>("six");
         numbers[7] = Content.Load<Texture2D>("seven");
         numbers[8] = Content.Load<Texture2D>("eight");
-
     }
 
     protected override void Update(GameTime gameTime)
@@ -148,8 +180,8 @@ public class MyGame : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         spriteBatch.Begin();
-        for (int row = 0; row < BOARDSIZE; row++)
-            for (int column = 0; column < BOARDSIZE; column++)
+        for (int row = 0; row <= BOARDSIZE; row++)
+            for (int column = 0; column <= BOARDSIZE; column++)
                 if (cell[row, column].hasBomb)
                     spriteBatch.Draw(bombTexture, cell[row, column].position, Color.White);
                 else

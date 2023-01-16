@@ -20,8 +20,8 @@ public class MyGame : Game
         public Texture2D texture;
     }
 
-    const int BOARDSIZE = 10;
-    const int CELLWIDTH = 50;
+    const int BOARDSIZE = 16;
+    const int CELLWIDTH = 48;
     Cell[,] cell = new Cell[BOARDSIZE + 2, BOARDSIZE + 2];
     Texture2D bombTexture, flagTexture, blankTexture;
     Texture2D[] numbers = new Texture2D[9];
@@ -69,26 +69,26 @@ public class MyGame : Game
     void PlantBombs()
     {
         Random random = new Random();
-        bool[] array = new bool[100];
+        bool[] array = new bool[256];
 
-        for (int i = 0; i < 90; i++)
+        for (int i = 0; i < 216; i++)
             array[i] = false;
 
-        for (int i = 90; i < 100; i++)
+        for (int i = 216; i < 256; i++)
             array[i] = true;
         
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 256; i++)
         {
-            int pos = random.Next(100);
+            int pos = random.Next(256);
             bool save = array[i];
             array[i] = array[pos];
             array[pos] = save;
         }
 
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 256; i++)
         {
-            int column = i % 10;
-            int row = i / 10;
+            int column = i % BOARDSIZE;
+            int row = i / BOARDSIZE;
             cell[row, column].hasBomb = array[i];
         }
 

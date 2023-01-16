@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>DesktopGL</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/Blank.png</File>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/Bomb.png</File>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/Eight.png</File>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/Five.png</File>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/Flag.png</File>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/Four.png</File>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/One.png</File>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/Seven.png</File>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/Six.png</File>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/Three.png</File>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/Two.png</File>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/Zero.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\natha\\Documents\\minesweeper.cs\\minesweeper.cs.csproj": {}
+    "C:\\Users\\natha\\Documents\\minesweeper.cs\\minesweeper.cs.csproj": {}
   },
   "projects": {
-    "c:\\Users\\natha\\Documents\\minesweeper.cs\\minesweeper.cs.csproj": {
+    "C:\\Users\\natha\\Documents\\minesweeper.cs\\minesweeper.cs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\natha\\Documents\\minesweeper.cs\\minesweeper.cs.csproj",
+        "projectUniqueName": "C:\\Users\\natha\\Documents\\minesweeper.cs\\minesweeper.cs.csproj",
         "projectName": "minesweeper.cs",
-        "projectPath": "c:\\Users\\natha\\Documents\\minesweeper.cs\\minesweeper.cs.csproj",
+        "projectPath": "C:\\Users\\natha\\Documents\\minesweeper.cs\\minesweeper.cs.csproj",
         "packagesPath": "C:\\Users\\natha\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\natha\\Documents\\minesweeper.cs\\obj\\",
+        "outputPath": "C:\\Users\\natha\\Documents\\minesweeper.cs\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\natha\\AppData\\Roaming\\NuGet\\NuGet.Config"

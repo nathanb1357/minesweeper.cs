@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace minesweeper.cs;
 
@@ -45,17 +46,66 @@ public class MyGame : Game
         base.Initialize();
     }
 
-    protected void InitializeBoard()
+    void InitializeBoard()
     {
-
+        for (int row = 0; row < BOARDSIZE; row++)
+        {
+            for (int column = 0; column < BOARDSIZE; column++)
+            {
+                cell[row, column].hasBomb = false;
+                cell[row, column].hasFlag = false;
+                cell[row, column].isUncovered = false;
+                cell[row, column].position.Width = CELLWIDTH;
+                cell[row, column].position.Height = CELLWIDTH;
+                
+                // Board size = 500px * 500px
+                cell[row, column].position.X = column * CELLWIDTH;
+                cell[row, column].position.Y = row * CELLWIDTH;
+                cell[row, column].neighbouringBombs = 0;
+            }
+        }
     }
 
-    protected void PlantBombs()
+    void PlantBombs()
     {
+        Random random = new Random();
+        bool[] array = new bool[100];
+
+        for (int i = 0; i < 90; i++)
+            array[i] = false;
+
+        for (int i = 90; i < 100; i++)
+            array[i] = true;
         
+        for (int i = 0; i < 100; i++)
+        {
+            int pos = random.Next(100);
+            bool save = array[i];
+            array[i] = array[pos];
+            array[pos] = save;
+        }
+
+        for (int i = 0; i < 100; i++)
+        {
+            int column = i % 10;
+            int row = i / 10;
+            cell[row, column].hasBomb = array[i];
+        }
+
+        // for (int i = 0; i < 100; i++)
+        // {
+        //     if (array[i])
+        //         Console.Write("*");
+        //     else
+        //         Console.Write(".");
+        //     if ((i + 1) % 10 == 0)
+        //         Console.WriteLine();
+        // }
+
+        // Console.ReadLine();
     }
 
-    protected void CountNeighbours()
+    void CountNeighbours()
     {
         
     }
@@ -97,7 +147,14 @@ public class MyGame : Game
     {
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
-        // TODO: Add your drawing code here
+        spriteBatch.Begin();
+        for (int row = 0; row < BOARDSIZE; row++)
+            for (int column = 0; column < BOARDSIZE; column++)
+                if (cell[row, column].hasBomb)
+                    spriteBatch.Draw(bombTexture, cell[row, column].position, Color.White);
+                else
+                    spriteBatch.Draw(blankTexture, cell[row, column].position, Color.White);
+        spriteBatch.End();
 
         base.Draw(gameTime);
     }

@@ -1,13 +1,13 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"C:/Users/natha/Documents/minesweeper.cs/Content/Blank.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Blank.xnb","TextureProcessor","Texture2DContent",496,65621,0.1282112
-"C:/Users/natha/Documents/minesweeper.cs/Content/Bomb.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Bomb.xnb","TextureProcessor","Texture2DContent",548,65621,0.0030966
-"C:/Users/natha/Documents/minesweeper.cs/Content/Eight.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Eight.xnb","TextureProcessor","Texture2DContent",506,65621,0.0031866
-"C:/Users/natha/Documents/minesweeper.cs/Content/Five.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Five.xnb","TextureProcessor","Texture2DContent",1669,65621,0.0029949
-"C:/Users/natha/Documents/minesweeper.cs/Content/Flag.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Flag.xnb","TextureProcessor","Texture2DContent",998,65621,0.0038795
-"C:/Users/natha/Documents/minesweeper.cs/Content/Four.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Four.xnb","TextureProcessor","Texture2DContent",2590,65621,0.0031434
-"C:/Users/natha/Documents/minesweeper.cs/Content/One.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/One.xnb","TextureProcessor","Texture2DContent",1571,65621,0.0063814
-"C:/Users/natha/Documents/minesweeper.cs/Content/Seven.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Seven.xnb","TextureProcessor","Texture2DContent",500,65621,0.003044
-"C:/Users/natha/Documents/minesweeper.cs/Content/Six.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Six.xnb","TextureProcessor","Texture2DContent",1797,65621,0.0032264
-"C:/Users/natha/Documents/minesweeper.cs/Content/Three.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Three.xnb","TextureProcessor","Texture2DContent",1241,65621,0.0027062
-"C:/Users/natha/Documents/minesweeper.cs/Content/Two.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Two.xnb","TextureProcessor","Texture2DContent",1102,65621,0.0034528
-"C:/Users/natha/Documents/minesweeper.cs/Content/Zero.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Zero.xnb","TextureProcessor","Texture2DContent",453,65621,0.0025001
+"C:/Users/natha/Documents/minesweeper.cs/Content/Blank.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Blank.xnb","TextureProcessor","Texture2DContent",496,65621,0.1642571
+"C:/Users/natha/Documents/minesweeper.cs/Content/Bomb.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Bomb.xnb","TextureProcessor","Texture2DContent",548,65621,0.0037138
+"C:/Users/natha/Documents/minesweeper.cs/Content/Eight.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Eight.xnb","TextureProcessor","Texture2DContent",506,65621,0.0038005
+"C:/Users/natha/Documents/minesweeper.cs/Content/Five.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Five.xnb","TextureProcessor","Texture2DContent",1669,65621,0.0041104
+"C:/Users/natha/Documents/minesweeper.cs/Content/Flag.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Flag.xnb","TextureProcessor","Texture2DContent",998,65621,0.003768
+"C:/Users/natha/Documents/minesweeper.cs/Content/Four.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Four.xnb","TextureProcessor","Texture2DContent",2590,65621,0.004066
+"C:/Users/natha/Documents/minesweeper.cs/Content/One.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/One.xnb","TextureProcessor","Texture2DContent",1571,65621,0.0066508
+"C:/Users/natha/Documents/minesweeper.cs/Content/Seven.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Seven.xnb","TextureProcessor","Texture2DContent",500,65621,0.0031533
+"C:/Users/natha/Documents/minesweeper.cs/Content/Six.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Six.xnb","TextureProcessor","Texture2DContent",1797,65621,0.0030519
+"C:/Users/natha/Documents/minesweeper.cs/Content/Three.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Three.xnb","TextureProcessor","Texture2DContent",1241,65621,0.0031518
+"C:/Users/natha/Documents/minesweeper.cs/Content/Two.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Two.xnb","TextureProcessor","Texture2DContent",1102,65621,0.002782
+"C:/Users/natha/Documents/minesweeper.cs/Content/Zero.png","C:/Users/natha/Documents/minesweeper.cs/Content/bin/DesktopGL/Content/Zero.xnb","TextureProcessor","Texture2DContent",453,65621,0.0027545

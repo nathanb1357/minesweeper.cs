@@ -167,11 +167,39 @@ public class MyGame : Game
 
     protected override void Update(GameTime gameTime)
     {
-        if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-            Exit();
+        mouse = Mouse.GetState();
+        int row, column;
 
-        // TODO: Add your update logic here
+        row = mouse.Y / CELLWIDTH + 1;
+        column = mouse.X / CELLWIDTH + 1;
 
+        if (column > BOARDSIZE)
+            return;
+        if (row > BOARDSIZE)
+            return;
+        
+        if (mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
+        {
+            if (cell[row, column].isUncovered == false && cell[row, column].hasBomb)
+            {
+                Exit();
+            }
+
+            if (cell[row, column].isUncovered == false && cell[row, column].hasFlag == false)
+            {
+                cell[row, column].isUncovered = true;
+            }
+        }
+
+        else if (mouse.RightButton == ButtonState.Pressed && prevMouse.RightButton == ButtonState.Released)
+        {
+            if (cell[row, column].isUncovered == false && cell[row, column].hasFlag == false)
+                cell[row, column].hasFlag = true;
+            else if (cell[row, column].isUncovered == false && cell[row, column].hasBomb == true)
+                cell[row, column].hasFlag = false;
+        }
+
+        prevMouse = mouse;
         base.Update(gameTime);
     }
 
@@ -182,9 +210,11 @@ public class MyGame : Game
         spriteBatch.Begin();
         for (int row = 0; row <= BOARDSIZE; row++)
             for (int column = 0; column <= BOARDSIZE; column++)
-                if (cell[row, column].hasBomb)
-                    spriteBatch.Draw(bombTexture, cell[row, column].position, Color.White);
-                else
+                if (cell[row, column].hasFlag)
+                    spriteBatch.Draw(flagTexture, cell[row, column].position, Color.White);
+                else if (cell[row, column].isUncovered)
+                    spriteBatch.Draw(numbers[cell[row, column].neighbouringBombs], cell[row, column].position, Color.White);
+                else 
                     spriteBatch.Draw(blankTexture, cell[row, column].position, Color.White);
         spriteBatch.End();
 

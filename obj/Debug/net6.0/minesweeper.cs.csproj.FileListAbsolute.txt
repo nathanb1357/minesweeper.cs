@@ -35,3 +35,5 @@ C:\Users\natha\Documents\minesweeper.cs\bin\Debug\net6.0\Content\Six.xnb
 C:\Users\natha\Documents\minesweeper.cs\bin\Debug\net6.0\Content\Three.xnb
 C:\Users\natha\Documents\minesweeper.cs\bin\Debug\net6.0\Content\Two.xnb
 C:\Users\natha\Documents\minesweeper.cs\bin\Debug\net6.0\Content\Zero.xnb
+C:\Users\natha\Documents\minesweeper.cs\bin\Debug\net6.0\Content\GameOver.xnb
+C:\Users\natha\Documents\minesweeper.cs\bin\Debug\net6.0\Content\File.xnb

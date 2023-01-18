@@ -9,7 +9,7 @@ public class MyGame : Game
 {
     private GraphicsDeviceManager graphics;
     private SpriteBatch spriteBatch;
-
+    private SpriteFont font;
     struct Cell
     {
         public bool hasFlag;
@@ -27,7 +27,14 @@ public class MyGame : Game
     Texture2D bombTexture, flagTexture, blankTexture;
     Texture2D[] numbers = new Texture2D[9];
     MouseState mouse, prevMouse;
-    public bool GameOver;
+    enum GameStates
+    {
+        GameOverWin,
+        GameOverLose,
+        Playing
+    }
+    GameStates gameState;
+    int flagsPlanted, bombsLocated;
 
     public MyGame()
     {
@@ -45,8 +52,10 @@ public class MyGame : Game
         InitializeBoard();
         PlantBombs();
         CountNeighbours();
-        GameOver = false;
-
+        gameState = GameStates.Playing;
+        flagsPlanted = 0;
+        bombsLocated = 0;
+        font = Content.Load<SpriteFont>("File");
         base.Initialize();
     }
 
@@ -95,18 +104,6 @@ public class MyGame : Game
             int row = (i / BOARDSIZE) + 1;
             cell[row, column].hasBomb = array[i];
         }
-
-        // for (int i = 0; i < 100; i++)
-        // {
-        //     if (array[i])
-        //         Console.Write("*");
-        //     else
-        //         Console.Write(".");
-        //     if ((i + 1) % 10 == 0)
-        //         Console.WriteLine();
-        // }
-
-        // Console.ReadLine();
     }
 
     void CountNeighbours()
@@ -180,9 +177,9 @@ public class MyGame : Game
         
         if (mouse.LeftButton == ButtonState.Pressed && prevMouse.LeftButton == ButtonState.Released)
         {
-            if (cell[row, column].isUncovered == false && cell[row, column].hasBomb)
+            if (cell[row, column].isUncovered == false && cell[row, column].hasBomb && cell[row, column].hasFlag == false)
             {
-                Exit();
+                gameState = GameStates.GameOverLose;
             }
 
             if (cell[row, column].isUncovered == false && cell[row, column].hasFlag == false)
@@ -194,9 +191,22 @@ public class MyGame : Game
         else if (mouse.RightButton == ButtonState.Pressed && prevMouse.RightButton == ButtonState.Released)
         {
             if (cell[row, column].isUncovered == false && cell[row, column].hasFlag == false)
-                cell[row, column].hasFlag = true;
-            else if (cell[row, column].isUncovered == false && cell[row, column].hasBomb == true)
+            {
+                if (flagsPlanted < BOMBS)
+                {
+                    cell[row, column].hasFlag = true;
+                    flagsPlanted++;
+                    if (cell[row, column].hasBomb)
+                        bombsLocated++;
+                    if (bombsLocated == BOMBS)
+                        gameState = GameStates.GameOverWin;
+                }
+            }
+            else if (cell[row, column].isUncovered == false && cell[row, column].hasFlag == true)
                 cell[row, column].hasFlag = false;
+                flagsPlanted--;
+                if (cell[row, column].hasBomb)
+                    bombsLocated--;
         }
 
         prevMouse = mouse;
@@ -208,14 +218,29 @@ public class MyGame : Game
         GraphicsDevice.Clear(Color.CornflowerBlue);
 
         spriteBatch.Begin();
-        for (int row = 0; row <= BOARDSIZE; row++)
-            for (int column = 0; column <= BOARDSIZE; column++)
-                if (cell[row, column].hasFlag)
-                    spriteBatch.Draw(flagTexture, cell[row, column].position, Color.White);
-                else if (cell[row, column].isUncovered)
-                    spriteBatch.Draw(numbers[cell[row, column].neighbouringBombs], cell[row, column].position, Color.White);
-                else 
-                    spriteBatch.Draw(blankTexture, cell[row, column].position, Color.White);
+        if (gameState == GameStates.Playing)
+        {
+            for (int row = 0; row <= BOARDSIZE; row++)
+                for (int column = 0; column <= BOARDSIZE; column++)
+                    if (cell[row, column].hasFlag)
+                        spriteBatch.Draw(flagTexture, cell[row, column].position, Color.White);
+                    else if (cell[row, column].isUncovered)
+                        spriteBatch.Draw(numbers[cell[row, column].neighbouringBombs], cell[row, column].position, Color.White);
+                    else 
+                        spriteBatch.Draw(blankTexture, cell[row, column].position, Color.White);
+        }
+        else if (gameState == GameStates.GameOverLose)
+        {
+            for (int row = 0; row <= BOARDSIZE; row++)
+                for (int col = 0; col <= BOARDSIZE; col++)
+                    if (cell[row, col].hasBomb)
+                        spriteBatch.Draw(bombTexture, cell[row, col].position, Color.White);
+            spriteBatch.DrawString(font, "You Lose!", new Vector2(300, 300), Color.Black);
+        }
+        else if (gameState == GameStates.GameOverWin)
+        {
+            spriteBatch.DrawString(font, "You Win!", new Vector2(300, 300), Color.Black);
+        }
         spriteBatch.End();
 
         base.Draw(gameTime);

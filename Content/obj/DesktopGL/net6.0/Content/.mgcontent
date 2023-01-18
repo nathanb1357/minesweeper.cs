@@ -7,6 +7,7 @@
     <File>C:/Users/natha/Documents/minesweeper.cs/Content/Blank.png</File>
     <File>C:/Users/natha/Documents/minesweeper.cs/Content/Bomb.png</File>
     <File>C:/Users/natha/Documents/minesweeper.cs/Content/Eight.png</File>
+    <File>C:/Users/natha/Documents/minesweeper.cs/Content/File.spritefont</File>
     <File>C:/Users/natha/Documents/minesweeper.cs/Content/Five.png</File>
     <File>C:/Users/natha/Documents/minesweeper.cs/Content/Flag.png</File>
     <File>C:/Users/natha/Documents/minesweeper.cs/Content/Four.png</File>
@@ -18,6 +19,7 @@
     <File>C:/Users/natha/Documents/minesweeper.cs/Content/Zero.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
